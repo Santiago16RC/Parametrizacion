@@ -1,0 +1,193 @@
+{
+	"info": {
+		"_postman_id": "ab3a08fb-3380-4d99-b5fb-a5463682b9c4",
+		"name": "Ejercicio_Parametrizacion",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40214173"
+	},
+	"item": [
+		{
+			"name": "Postman Post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Nombre\": \"{{Nombre}}\",\r\n  \"Apellido_Paterno\": \"{{Apellido_Paterno}}\",\r\n  \"Apellido_Materno\": \"Cedeño\",\r\n  \"Edad\": {{Edad}},\r\n  \"Folio\": \"{{$guid}}\",\r\n  \"ID\":\"{{$randomInt}}\",\r\n  \"Fecha\": \"{{$isoTimestamp}}\",\r\n  \"Correo_Electronico\": \"{{$randomEmail}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://postman-echo.com/post",
+					"protocol": "https",
+					"host": [
+						"postman-echo",
+						"com"
+					],
+					"path": [
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Postman Post - Datos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 300ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(300);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Nombre\": \"{{Nombre}}\",\r\n  \"Apellido_Paterno\": \"{{Apellido_Paterno}}\",\r\n  \"Apellido_Materno\": \"{{Apellido_Materno}}\",\r\n  \"Edad\": {{Edad}},\r\n  \"Pais\": \"{{Pais}}\",\r\n  \"CodigoPostal\":\"{{CodigoPostal}}\",\r\n  \"EstadoCivil\": \"{{EstadoCivil}}\",\r\n  \"Telefono\": \"{{Telefono}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://postman-echo.com/post{{parametro}}",
+					"protocol": "https",
+					"host": [
+						"postman-echo",
+						"com"
+					],
+					"path": [
+						"post{{parametro}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Inyection Post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 300ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(300);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Nombre\": \"{{params}}\",\r\n  \"Apellido_Paterno\": \"{{params}}\",\r\n  \"Apellido_Materno\": \"{{params}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://postman-echo.com/post",
+					"protocol": "https",
+					"host": [
+						"postman-echo",
+						"com"
+					],
+					"path": [
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Areas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.football-data.org/v2/areas{{params}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"football-data",
+						"org"
+					],
+					"path": [
+						"v2",
+						"areas{{params}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
